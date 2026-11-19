@@ -43,7 +43,7 @@ public class HolaMundoController {
         return secretodev;
     }
 
-    /*@GetMapping("/basedatos")
+    @GetMapping("/basedatos")
     public Object basedatos() {
         String user = System.getenv("USER");
         String password = System.getenv("PASSWORD");
@@ -80,6 +80,6 @@ public class HolaMundoController {
         } catch (SQLException e) {
             return "Error al consultar la base de datos: " + e.getMessage();
         }
-    }*/
+    }
 }
 
