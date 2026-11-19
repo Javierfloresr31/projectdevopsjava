@@ -31,7 +31,7 @@ public class HolaMundoController {
 
     @GetMapping("/saludo")
     public String saludo() {
-        return "Hola " + System.getenv("usuariodev") + ". Saludos.";
+        return "Hola " + System.getenv("usuariodev") + ". Saludos hoy 18/11/2026.";
     }
 
     @GetMapping("/secreto")
