@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -11,12 +13,18 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HolaMundoController {
+
+     private static final Path IMAGEN_ASUS = Path.of("/mnt/asus.jpg");
 
     @Value("${azure.sql.server}")
     private String sqlServer;
@@ -41,6 +49,16 @@ public class HolaMundoController {
             return "La variable de entorno secretodev no está definida";
         }
         return secretodev;
+    }
+
+    @GetMapping(value = "/imagen", produces = MediaType.IMAGE_JPEG_VALUE)
+    public ResponseEntity<Resource> imagen() {
+        if (!Files.isRegularFile(IMAGEN_ASUS)) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok()
+                .contentType(MediaType.IMAGE_JPEG)
+                .body(new FileSystemResource(IMAGEN_ASUS));
     }
 
     @GetMapping("/basedatos")
