@@ -1,7 +1,7 @@
-# Compiled class files
+# Compiled Java classes
 *.class
 
-# Maven
+# Maven build output and generated files
 target/
 pom.xml.tag
 pom.xml.releaseBackup
@@ -11,9 +11,29 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
+
+# Maven Wrapper:
+# Keep mvnw, mvnw.cmd and .mvn/wrapper/maven-wrapper.properties versioned.
+# Ignore only the downloaded wrapper JAR (it can be regenerated).
 .mvn/wrapper/maven-wrapper.jar
 
-# IDEs
+# Spring Boot / application logs and runtime files
+*.log
+logs/
+*.pid
+*.pid.lock
+hs_err_pid*
+replay_pid*
+
+# Local application configuration (may contain credentials)
+application-local.properties
+application-*.local.properties
+*.local.env
+.env
+.env.*
+!.env.example
+
+# IDEs and editor metadata
 .idea/
 *.iml
 *.iws
@@ -23,15 +43,18 @@ buildNumber.properties
 .settings/
 .project
 .classpath
+*.swp
+*.swo
+*~
 
-# OS files
+# Operating system files
 .DS_Store
+.AppleDouble
+.LSOverride
 Thumbs.db
+Desktop.ini
 
-# Log files
-*.log
-
-# Package Files
+# Generated archives and packages
 *.jar
 *.war
 *.nar
@@ -40,6 +63,8 @@ Thumbs.db
 *.tar.gz
 *.rar
 
-# Application specific
-application-local.properties
-
+# Local test reports and coverage
+surefire-reports/
+failsafe-reports/
+.coverage
+coverage/
